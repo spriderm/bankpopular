@@ -1,0 +1,232 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[4790],{86659:function(e,t,n){(window.__NEXT_P=window.__NEXT_P||[]).push(["/_sites/[viewport]/[hostname]/order",function(){return n(55417)}])},49239:function(e,t,n){"use strict";var r=n(31230);t.Z=r.default`
+  fragment checkoutV3CartPreferences on Preference {
+    menuId
+    cart {
+      websiteCoinsToSpend
+      justoCoinsToSpend
+      items {
+        _id
+        amount
+        isOutOfStock
+        priceWithoutDiscounts: unitPrice(includeDiscount: false)
+        priceWithDiscounts: unitPrice(includeDiscount: true)
+        descriptionItems {
+          title
+          selections
+        }
+        outOfStockMessage
+        product {
+          _id
+          name
+          image {
+            _id
+            url: resizedURL(width: 300, height: 300, format: "webp")
+          }
+        }
+      }
+    }
+  }
+`},62446:function(e,t,n){"use strict";var r=n(31230);t.Z=r.default`
+  fragment checkoutV3CouponPreferences on Preference {
+    websiteId
+    couponCode
+    cart {
+      couponCode
+      couponStatus {
+        errorMessage
+        couponId
+        name
+        discount
+      }
+    }
+  }
+`},63007:function(e,t,n){"use strict";n.d(t,{Z:function(){return f}});var r=n(31230),i=n(49239),s=n(62446),c=r.default`
+  fragment checkoutV3DeliveryPreferences on Preference {
+    placeId
+    tableName
+    directions {
+      duration
+    }
+    address {
+      _id
+      address
+      addressSecondary
+      addressLine2
+      acceptsNoLine2
+      location
+      comment
+    }
+  }
+`,a=n(50809),o=r.default`
+  fragment checkoutV3PickupPreferences on Preference {
+    store {
+      _id
+      name
+      address {
+        address
+        addressLine2
+      }
+    }
+  }
+`,u=r.default`
+  fragment checkoutV3ProfilePreferences on Preference {
+    sessionEmail
+    sessionPhone
+    sessionEmailHasAccount
+    user {
+      _id
+      name
+      email
+      phone
+      profile {
+        firstName
+        lastName
+      }
+    }
+  }
+`,d=r.default`
+  fragment checkoutV3SchedulePreferences on Preference {
+    timeLabel
+    time
+    dropOffType
+    deliverAt
+    store {
+      minimumAnticipationDays
+      availableScheduleDaysOptions {
+        label
+        value
+      }
+      schedule {
+        itsOpenNow: itsAvailableAt(websiteId: $websiteId)
+      }
+      currentPreparationDuration
+      currentDeliveryDuration
+      availablePaymentTypes
+      disableNowOrders
+    }
+  }
+`,l=n(20555),f=r.default`
+  fragment checkoutV3Preferences on Preference {
+    _id
+    websiteId
+    storeId
+    ...checkoutV3ProfilePreferences
+    ...checkoutV3CartPreferences
+    ...checkoutV3SchedulePreferences
+    ...checkoutV3DeliveryPreferences
+    ...checkoutV3PickupPreferences
+    ...checkoutV3SummaryPreferences
+    ...checkoutV3CouponPreferences
+    ...checkoutV3PaymentMethodPreferences
+  }
+
+  ${u}
+  ${i.Z}
+  ${d}
+  ${c}
+  ${o}
+  ${l.Z}
+  ${s.Z}
+  ${a.Z}
+`},50809:function(e,t,n){"use strict";var r=n(31230);t.Z=r.default`
+  fragment checkoutV3PaymentMethodPreferences on Preference {
+    _id
+    paymentType
+    cardId
+    otherPaymentType
+    website {
+      _id
+      stores {
+        _id
+      }
+    }
+    card {
+      _id
+      brandId
+      brandName
+      last4
+      cardType
+    }
+    websiteCoinsToSpend
+    justoCoinsToSpend
+  }
+`},20555:function(e,t,n){"use strict";var r=n(31230);t.Z=r.default`
+  fragment checkoutV3SummaryPreferences on Preference {
+    tipAmount
+    tipPercentage
+
+    deliveryType
+
+    address {
+      _id
+    }
+
+    store {
+      _id
+      hideTip
+    }
+
+    website {
+      _id
+      noTipByDefault
+      bagCost
+      loginWithExternalProvidersAvailable
+    }
+
+    loyaltyProgram
+
+    cart {
+      pointsDetails {
+        amount
+        name
+      }
+      deliveryFee
+      serviceFee
+      itemsPrice
+      subtotalWithProductDiscount: itemsPrice(
+        includeDiscount: true
+        includeCoupon: false
+        includeJustoCoins: false
+        includeLoyaltyDiscount: false
+        includeWebsiteCoins: false
+      )
+
+      priceBeforeWebsiteCoins: itemsPrice(
+        includeDiscount: true
+        includeCoupon: true
+        includeJustoCoins: false
+        includeWebsiteCoins: false
+      )
+      amountToPay
+      totalPrice
+      realPrice: itemsPrice(includeDiscount: false)
+      acceptsTip
+      hasFixedAmountTips
+      tipOptions
+      tipPercentagesOptions
+      calculatedTipAmount
+
+      couponStatus {
+        code
+        name
+        discount
+      }
+
+      specialRequirementsIds
+
+      loyaltyTransactionStatus {
+        transactionId
+        loyaltyName
+        discount
+      }
+    }
+  }
+`},27319:function(e,t,n){"use strict";n.d(t,{Z:function(){return o}});var r=n(63007),i=n(28062),s=n(26730),c=n(65379),a=n(31230);function o(){let e=(0,s.Z)(),t=(0,c.Zu)({query:a.default`
+      query getCheckoutV3($websiteId: ID) {
+        preferences: userPreferences(websiteId: $websiteId) {
+          ...checkoutV3Preferences
+        }
+      }
+      ${r.Z}
+    `,variables:{websiteId:e},fetchPolicy:"cache-first",pollInterval:6e5,omit:(0,i.Z)()});return{preferences:t.preferences,loading:t.loading}}},55417:function(e,t,n){"use strict";n.r(t),n.d(t,{__N_SSG:function(){return A},default:function(){return O}});var r=n(85893),i=n(89454),s=n(19439),c=n(82853),a=n(50340),o=n(44456),u=n(63384),d=n(98087),l=n(67894),f=n(74015),p=n(27319),m=n(67294),h=n(6944),P=n(97644);function b(){let{preferences:e}=(0,p.Z)(),{website:t,design:n}=(0,i.g9)(),r=(0,h.ZP)();return(0,m.useEffect)(()=>{e?._id&&r.trackEventAsDefaultOnInternal(P.g.orderPageViewed,{menulayoutDesign:t?.menuLayout,productCardDesign:n?.design.productCardDesign,menuId:e?.menuId})},[e?._id]),null}function y(){return(0,r.jsx)(f.Z,{fallback:null,children:(0,r.jsx)(b,{})})}var k=n(42010),w=n(5152),g=n.n(w),_=n(99889);let v=g()(()=>Promise.all([n.e(3662),n.e(9866),n.e(5445),n.e(5990),n.e(6583),n.e(4053),n.e(6350),n.e(191),n.e(939),n.e(8524),n.e(8866),n.e(4761),n.e(1047),n.e(3827),n.e(5637),n.e(3768),n.e(7832),n.e(9385),n.e(9380)]).then(n.bind(n,97808)),{loadableGenerated:{webpack:()=>[97808]}}),I=g()(()=>Promise.all([n.e(3662),n.e(9866),n.e(5445),n.e(5990),n.e(6583),n.e(4053),n.e(6350),n.e(191),n.e(939),n.e(8524),n.e(8866),n.e(4761),n.e(1047),n.e(3827),n.e(5637),n.e(3768),n.e(7832),n.e(9385),n.e(7742)]).then(n.bind(n,28735)),{loadableGenerated:{webpack:()=>[28735]}}),C=g()(()=>Promise.all([n.e(3662),n.e(9866),n.e(5445),n.e(5990),n.e(6583),n.e(4053),n.e(6350),n.e(191),n.e(939),n.e(8524),n.e(8866),n.e(4761),n.e(1047),n.e(3827),n.e(5637),n.e(3768),n.e(7832),n.e(9385),n.e(9025)]).then(n.bind(n,88738)),{loadableGenerated:{webpack:()=>[88738]}}),D=g()(()=>Promise.all([n.e(3662),n.e(9866),n.e(5445),n.e(5990),n.e(191),n.e(939),n.e(8524),n.e(8866),n.e(3827),n.e(5637),n.e(231)]).then(n.bind(n,70131)),{loadableGenerated:{webpack:()=>[70131]}}),Z=g()(()=>n.e(4833).then(n.bind(n,74833)),{loadableGenerated:{webpack:()=>[74833]}}),j=g()(()=>n.e(72).then(n.bind(n,10650)),{loadableGenerated:{webpack:()=>[10650]}}),x=g()(()=>n.e(8036).then(n.bind(n,18036)),{loadableGenerated:{webpack:()=>[18036]},ssr:!1}),T=g()(()=>n.e(6167).then(n.bind(n,26167)),{loadableGenerated:{webpack:()=>[26167]},ssr:!1}),V=e=>{switch(e){case"v1":return v;case"v2":default:return I;case"mobile":return C}};function S(e){let{productId:t}=e,n=V((0,k.Z)()),i=(0,l.Z)();return(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(D,{}),(0,r.jsx)(j,{slug:["/pedir","/order"]}),(0,r.jsx)(m.Suspense,{fallback:(0,r.jsx)("div",{className:"h-20 w-full bg-red-500"}),children:(0,r.jsx)(n,{children:(0,r.jsx)(_.Kq,{productId:t,children:(0,r.jsx)(Z,{})})})}),!i&&(0,r.jsx)(x,{}),i&&(0,r.jsx)(y,{}),t?null:(0,r.jsx)(T,{})]})}function N(e){return(0,r.jsx)(d.Z,{children:(0,r.jsx)(S,{...e})})}var A=!0;function O(){let e=(0,a.Z)("productId",s.Z),t=(0,c.T)(e),{website:n,design:d}=(0,i.g9)();return(0,r.jsx)(o.Z,{LayoutComponent:u.default,children:(0,r.jsx)(i.g_,{websiteMenuInfo:{website:n,design:d},children:(0,r.jsx)(N,{productId:Array.isArray(t)?t[0]:t})})})}}},function(e){e.O(0,[260,6120,1664,4495,4456,3384,9214,2888,9774,179],function(){return e(e.s=86659)}),_N_E=e.O()}]);
+//# sourceMappingURL=order-4668b7ce116107ca.js.map
