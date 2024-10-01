@@ -1,0 +1,118 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[9214],{88572:function(t,e,r){"use strict";function n(t){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}function i(t,e,r){var i=r.value;if("function"!=typeof i)throw TypeError("@boundMethod decorator can only be applied to methods not: ".concat(n(i)));var o=!1;return{configurable:!0,get:function(){if(o||this===t.prototype||this.hasOwnProperty(e)||"function"!=typeof i)return i;var r=i.bind(this);return o=!0,Object.defineProperty(this,e,{configurable:!0,get:function(){return r},set:function(t){i=t,delete this[e]}}),o=!1,r},set:function(t){i=t}}}function o(t){var e;return"undefined"!=typeof Reflect&&"function"==typeof Reflect.ownKeys?e=Reflect.ownKeys(t.prototype):(e=Object.getOwnPropertyNames(t.prototype),"function"==typeof Object.getOwnPropertySymbols&&(e=e.concat(Object.getOwnPropertySymbols(t.prototype)))),e.forEach(function(e){if("constructor"!==e){var r=Object.getOwnPropertyDescriptor(t.prototype,e);"function"==typeof r.value&&Object.defineProperty(t.prototype,e,i(t,e,r))}}),t}function u(){return 1==arguments.length?o.apply(void 0,arguments):i.apply(void 0,arguments)}r.r(e),r.d(e,{boundClass:function(){return o},boundMethod:function(){return i},default:function(){return u}})},40098:function(t){var e=Math.ceil,r=Math.max;t.exports=function(t,n,i,o){for(var u=-1,c=r(e((n-t)/(i||1)),0),a=Array(c);c--;)a[o?c:++u]=t,t+=i;return a}},27561:function(t,e,r){var n=r(67990),i=/^\s+/;t.exports=function(t){return t?t.slice(0,n(t)+1).replace(i,""):t}},47415:function(t,e,r){var n=r(29932);t.exports=function(t,e){return n(e,function(e){return t[e]})}},47445:function(t,e,r){var n=r(40098),i=r(16612),o=r(18601);t.exports=function(t){return function(e,r,u){return u&&"number"!=typeof u&&i(e,r,u)&&(r=u=void 0),e=o(e),void 0===r?(r=e,e=0):r=o(r),u=void 0===u?e<r?1:-1:o(u),n(e,r,u,t)}}},16612:function(t,e,r){var n=r(77813),i=r(98612),o=r(65776),u=r(13218);t.exports=function(t,e,r){if(!u(r))return!1;var c=typeof e;return("number"==c?!!(i(r)&&o(e,r.length)):"string"==c&&e in r)&&n(r[e],t)}},67990:function(t){var e=/\s/;t.exports=function(t){for(var r=t.length;r--&&e.test(t.charAt(r)););return r}},77813:function(t){t.exports=function(t,e){return t===e||t!=t&&e!=e}},96026:function(t,e,r){var n=r(47445)();t.exports=n},18601:function(t,e,r){var n=r(14841),i=1/0;t.exports=function(t){return t?(t=n(t))===i||t===-i?(t<0?-1:1)*17976931348623157e292:t==t?t:0:0===t?t:0}},14841:function(t,e,r){var n=r(27561),i=r(13218),o=r(33448),u=0/0,c=/^[-+]0x[0-9a-f]+$/i,a=/^0b[01]+$/i,s=/^0o[0-7]+$/i,d=parseInt;t.exports=function(t){if("number"==typeof t)return t;if(o(t))return u;if(i(t)){var e="function"==typeof t.valueOf?t.valueOf():t;t=i(e)?e+"":e}if("string"!=typeof t)return 0===t?t:+t;t=n(t);var r=a.test(t);return r||s.test(t)?d(t.slice(2),r?2:8):c.test(t)?u:+t}},52628:function(t,e,r){var n=r(47415),i=r(3674);t.exports=function(t){return null==t?[]:n(t,i(t))}},40896:function(t,e,r){"use strict";r.d(e,{Z:function(){return u}});var n=r(85893);r(67294);var i=r(64352),o=r.n(i);function u(t){let e=t.height||200;return(0,n.jsx)("div",{className:o().container,style:{height:e}})}},98087:function(t,e,r){"use strict";r.d(e,{Z:function(){return u}});var n=r(85893),i=r(67294),o=r(40896);function u(t){return(0,n.jsx)(i.Suspense,{fallback:(0,n.jsx)(o.Z,{...t}),children:t.children})}},89454:function(t,e,r){"use strict";r.d(e,{g9:function(){return l},gW:function(){return s},g_:function(){return f}});var n=r(85893),i=r(9862),o=r(86841),u=r(26730);r(42202);var c=r(31230),a=r(67294);let s=c.default`
+  query getWebsiteMenuInformation_cached($websiteId: ID) {
+    website(websiteId: $websiteId) {
+      _id
+      name
+      description
+      deliveryTypes
+      isDeactivatedByDebt
+      minimumOrderPrice
+      menuLayout
+      productsLayout
+      headerLayout
+      defaultMenuId
+      isMultiBrand
+      showStoreName
+      activeGiftComponent
+      hideNotAvailableProducts
+      businessType
+      categoryLayoutForMultiBrand
+      categories {
+        _id
+        name
+      }
+      ...websiteLayout
+    }
+
+    design: sectionConfiguration(section: "design", websiteId: $websiteId) {
+      _id
+      design {
+        productCardDesign
+      }
+    }
+  }
+  ${o.Z}
+`,d=a.createContext(null),f=t=>{let{websiteMenuInfo:e,children:r}=t;return(0,n.jsx)(d.Provider,{value:e,children:r})},l=()=>{let t=a.useContext(d),e=(0,u.Z)(),{data:r}=(0,i.kJ)(s,{variables:{websiteId:e},fetchPolicy:"cache-first",skip:!!t});return t??r}},19439:function(t,e,r){"use strict";r.d(e,{Z:function(){return n}}),r(97385);let n=t=>{let e=t.match(/^\/(order|pedir)\/([^\/\?]+)\/?([^\/]*)/);return e&&"category"!==e[2]?e[2]:null}},60739:function(t,e,r){"use strict";r.d(e,{Z:function(){return i}});var n=r(17673);function i(t){let e=t.asPath.split("?")[1]??"";return(0,n.parse)(e)}},82853:function(t,e,r){"use strict";r.d(e,{T:function(){return i}});var n=r(19439);function i(t){if(t.asPath.includes("?")){let e=new URLSearchParams(t.asPath.split("?")[1]);if(e.has("productId"))return e.get("productId")}return(0,n.Z)(t.asPath)}},50340:function(t,e,r){"use strict";r.d(e,{Z:function(){return u}});var n=r(67294),i=r(60739),o=r(11163);function u(t,e){let r=(0,o.useRouter)();return(0,n.useEffect)(()=>{let n=e(r.asPath);if(r.isReady&&n&&r.query[t]!==n){let e=(0,i.Z)(r);r.replace({pathname:window.location.pathname,query:{...e,[t]:n}})}},[r,t,e]),r}},51450:function(t,e,r){"use strict";r.d(e,{K:function(){return o},W:function(){return i}});var n=r(31230);let i=n.default`
+  query getProductDetailsWeb_cached($productId: ID, $format: String, $websiteId: ID) {
+    product(productId: $productId, websiteId: $websiteId) {
+      _id
+      name
+      description
+      altImg
+      titleImg
+      urlVideo
+      informativeStamps
+      promotions {
+        _id
+        promotionType
+      }
+      images {
+        _id
+        url
+        imageLarge: resizedURL(width: 1200, height: 1200, format: $format)
+      }
+      categories {
+        _id
+        name
+        internalName
+      }
+      maxPurchaseQuantity
+      modifiers {
+        _id
+        name
+        description
+        min
+        max
+        optional
+        isImageModifier
+        options {
+          _id
+          name
+          max
+          requiresModifierOptionIds
+          requiresAtLeastOneModifierOption
+          image {
+            _id
+            url
+            imageLarge: resizedURL(width: 300, height: 300, format: $format)
+          }
+        }
+      }
+    }
+  }
+`,o=n.default`
+  query getProductDetailsNonCached(
+    $productId: ID
+    $menuId: ID
+    $websiteId: ID
+    $storeId: ID
+    $deliverAt: Date
+  ) {
+    product(productId: $productId, websiteId: $websiteId) {
+      _id
+      isOutOfStock(storeId: $storeId, deliverAt: $deliverAt)
+      availabilityAt(menuId: $menuId) {
+        available
+        basePrice
+        finalPrice
+        notAvailableMessage
+        hideDiscountBadge
+      }
+      modifiers {
+        _id
+        options {
+          _id
+          requiresModifierOptionIds
+          requiresAtLeastOneModifierOption
+          availabilityAt(menuId: $menuId) {
+            menuId
+            price
+            available
+          }
+          isOutOfStock(storeId: $storeId, deliverAt: $deliverAt)
+        }
+      }
+    }
+  }
+`},99889:function(t,e,r){"use strict";r.d(e,{Kq:function(){return l},NU:function(){return d},nn:function(){return p},xJ:function(){return f}});var n=r(85893),i=r(67294),o=r(28062),u=r(26730),c=r(51450),a=r(65379);let s=(0,i.createContext)({setProductId:()=>{}}),d=()=>{let{productId:t}=(0,i.useContext)(s);return t},f=()=>{let{setProductId:t}=(0,i.useContext)(s);return t},l=t=>{let{children:e,productId:r}=t,[o,u]=(0,i.useState)(r);return(0,i.useEffect)(()=>{u(r)},[r]),(0,n.jsx)(s.Provider,{value:{productId:void 0===o?r:o,setProductId:u},children:e})},p=()=>{let t=d(),e=(0,u.Z)(),r=(0,a.Zu)({query:c.W,partial:!0,fetchPolicy:"cache-first",omit:!t||(0,o.Z)(),variables:{productId:t,websiteId:e,format:"webp"}});return t?r?.product:null}},64352:function(t){t.exports={container:"_3dzszu0edT56nvw27R-vYR loadingGlow"}}}]);
+//# sourceMappingURL=9214-afc8a3e6ddc84887.js.map
